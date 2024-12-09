@@ -1,4 +1,4 @@
-import { wordsList } from './dictionary';
+import { wordsList } from './dictionary_medium';
 //array of all the letter in the alphabet
 const alphabet: string[] = [
     'a', 'b', 'c', 'd', 'e', 'f',
@@ -8,9 +8,9 @@ const alphabet: string[] = [
     'y', 'z'
   ];
 //length of the word to find
-const wordLen: number = 5;
+const wordLen: number = 7;
 //letter present in the words
-const wordToFindTemplate: string = 'n_o_o';
+const wordToFindTemplate: string = '_o_d__e';
 const wtfArr: string[] = [...wordToFindTemplate];
 //number of the letter in wordToFindTemplate 
 let numOfLetter: number = 0;
