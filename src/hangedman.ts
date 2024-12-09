@@ -10,9 +10,9 @@ const alphabet: string[] = [
 //length of the word to find
 const wordLen: number = 5;
 //letter present in the words
-const wordToFind: string = 'n_o_o';
-const wtfArr: string[] = [...wordToFind];
-//number of the letter in wordToFind 
+const wordToFindTemplate: string = 'n_o_o';
+const wtfArr: string[] = [...wordToFindTemplate];
+//number of the letter in wordToFindTemplate 
 let numOfLetter: number = 0;
 //populating numOfLetter
 wtfArr.forEach((letter) => {
