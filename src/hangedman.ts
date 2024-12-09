@@ -8,15 +8,27 @@ const alphabet: string[] = [
     'y', 'z'
   ];
 //length of the word to find
-const wordLen: number = 7;
+const wordLen: number = 5;
+//letter present in the words
+const wordToFind: string = 'n_o_o';
+const wtfArr: string[] = [...wordToFind];
+//number of the letter in wordToFind 
+let numOfLetter: number = 0;
+//populating numOfLetter
+wtfArr.forEach((letter) => {
+    if(letter !== '_') numOfLetter++;
+})
 //list of the words with the correct length
 const currentWordsList: string[] = [];
+//list of the words that match the word to find
+const currentWordToFindList: string[] = [];
 //list of all the occurrence per letter
 const occurrenceCount: number[] = [];
 //list in decremental order of the most present letter
 const mostPresentLetter: string[] = [];
 //populating the current word list
 wordsList.forEach((word) => { if(word.length === wordLen) currentWordsList.push(word) })
+//populating occurrence count
 for (let letter of alphabet){
     let count = 0;
     for(let word of currentWordsList){
@@ -24,7 +36,17 @@ for (let letter of alphabet){
     }
     occurrenceCount.push(count);
 }
+//populating most present letter
 for(let i = 0; i < occurrenceCount.length; i++){
     mostPresentLetter.push(alphabet[occurrenceCount.indexOf(Math.max(...occurrenceCount))]);
     occurrenceCount[occurrenceCount.indexOf(Math.max(...occurrenceCount))] = 0;
 }
+currentWordsList.forEach((word) => {
+    let count: number = 0;
+    for(let index in wtfArr){
+        if(wtfArr[index] !== '_' && word.charAt(Number(index)) === wtfArr[index]) count++;
+    }
+    if(count === numOfLetter) currentWordToFindList.push(word);
+})
+console.log(mostPresentLetter);
+console.log(currentWordToFindList);
