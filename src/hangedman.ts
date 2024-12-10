@@ -1,4 +1,4 @@
-import { wordsList } from './dictionary_medium';
+import { wordsList } from './dictionary_small';
 //array of all the letter in the alphabet
 const alphabet: string[] = [
     'a', 'b', 'c', 'd', 'e', 'f',
@@ -8,10 +8,12 @@ const alphabet: string[] = [
     'y', 'z'
   ];
 //length of the word to find
-const wordLen: number = 7;
+const wordLen: number =             7;
 //letter present in the words
-const wordToFindTemplate: string = '_o_d__e';
+const wordToFindTemplate: string =  '';
+const outLet: string =              '' ;
 const wtfArr: string[] = [...wordToFindTemplate];
+const outArr: string[] = [...outLet];
 //number of the letter in wordToFindTemplate 
 let numOfLetter: number = 0;
 //populating numOfLetter
@@ -42,6 +44,13 @@ for(let i = 0; i < occurrenceCount.length; i++){
     occurrenceCount[occurrenceCount.indexOf(Math.max(...occurrenceCount))] = 0;
 }
 currentWordsList.forEach((word) => {
+    let skip: boolean = false;
+    if(outArr.length > 0){
+        outArr.forEach((letter) => {
+            if(word.includes(letter)) skip = true;
+            })
+    }
+    if(skip) return;
     let count: number = 0;
     for(let index in wtfArr){
         if(wtfArr[index] !== '_' && word.charAt(Number(index)) === wtfArr[index]) count++;
