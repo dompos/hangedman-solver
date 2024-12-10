@@ -23,7 +23,7 @@ wtfArr.forEach((letter) => {
     if (letter !== '_') numOfLetter++;
 })
 //list of the words with the correct length
-const currentWordsList: string[] = [];
+let currentWordsList: string[] = [];
 //list of the words that match the word to find
 let currentWordToFindList: string[] = [];
 //list of all the occurrence per letter
@@ -64,20 +64,34 @@ const WordsList: (wtfArr: string[], outArr: string[], numOfLetter: number) => vo
     console.log(currentWordToFindList);
     currentWordToFindList = [];
 }
-for (let i = 0; i < wordLen; i++) {
-    wordToFindTemplate += '_';
+const setNew: () => void = () => {
+    wordLen = Number(readlineSync.question('Numero lettere: '));
+    currentWordsList = [];
+    wordsList.forEach((word) => { if (word.length === wordLen) currentWordsList.push(word) })
+    for (let i = 0; i < wordLen; i++) {
+        wordToFindTemplate += '_';
+    }
+    wtfArr = [...wordToFindTemplate];
+    outArr = [];
+    numOfLetter = 0;
+    console.log(currentWordToFindList);
+    console.log('-----------------');
 }
-wtfArr = [...wordToFindTemplate];
 let option: string = 'new';
 while (option !== 'stop') {
     switch (option) {
         case 'new':
+            setNew();
             WordsList(wtfArr, outArr, numOfLetter);
             option = 'cont'
             break;
         case 'cont':
             numOfLetter = 0;
             let template: string | string[] = readlineSync.question('Template parola: ');
+            if(template === 'new'){
+                option = 'new';
+                break;
+            }
             template = [...template];
             for (let i = 0; i < template.length; i += 2) {
                 wtfArr[Number(template[i]) - 1] = template[i + 1];
