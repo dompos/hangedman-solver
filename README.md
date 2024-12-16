@@ -25,7 +25,7 @@ A simple **Hanged Man** game built with **TypeScript** and `readline-sync`. The 
 2. Navigate to the project directory:
 
     ```bash
-    cd hanged-man-game
+    cd hangedman-solver
     ```
 
 3. Install the required dependencies:
